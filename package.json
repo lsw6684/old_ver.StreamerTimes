@@ -1,0 +1,10 @@
+{
+  "name": "streamertimes",
+  "version": "1.0.0",
+  "description": "Project with Vanilla and NodeJS",
+  "main": "index.js",
+  "author": "SeungWon Lee",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
