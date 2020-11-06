@@ -7,16 +7,21 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
-const app = express();
+const app = express();  //express를 import한 값을 const로
 
-app.use(cookieParser());
-app.use(bodyParser.json());
+//Middlewares
+app.set('view engine', "pug");
+app.use(cookieParser());    //cookie전달
+app.use(bodyParser.json()); //웹사이트로 전달되는 정보 검사
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(helmet());
-app.use(morgan("dev"));
+app.use(helmet());          //security
+app.use(morgan("dev"));     //logging
 
+//Routers
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
 
 export default app;
+
+//application 관련 코드들.
