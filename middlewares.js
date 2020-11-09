@@ -1,6 +1,6 @@
 import routes from "./routes";
 
-export const localsMiddle = (req, res, next) => {
+export const localsMiddleware = (req, res, next) => {
     res.locals.siteName = "Streamer Times";
     res.locals.routes = routes;
     next();
