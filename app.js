@@ -18,7 +18,10 @@ app.use(bodyParser.json()); //웹사이트로 전달되는 정보 검사
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(morgan("dev"));     //logging
 app.use(localsMiddleware);
-
+app.use(function(req, res, next) {
+    res.setHeader("Content-Security-Policy", "script-src 'self' https://archive.org");
+    return next();
+    });
 /*---------------------------------
 ★Three ways to make middleware
 app.use((req, res, next) => {}) 
