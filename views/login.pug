@@ -1,4 +1,10 @@
 extends layouts/main
 
 block content
-    p Login 
+    .form-container
+        //get은 url에 보여서 보안을 위해 post    
+        form(action=routes.login, method="post")                            
+            input(type = "email", name="email", placeholder="Email")
+            input(type = "password", name="password", placeholder="password")
+            input(type = "submit", value="로그인")
+        include partials/socialLogin
