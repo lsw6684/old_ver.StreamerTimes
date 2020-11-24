@@ -7,38 +7,38 @@ const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
 const OUTPUT_DIR = path.join(__dirname, "static");
 
 const config = {
-    entry: ENTRY_FILE,
-    mode: MODE,
-    module: {
-      rules: [
-        {
-          test: /\.(scss)$/,
-          use: ExtractCSS.extract([
-            {
-              loader: "css-loader"
-            },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            postcssOptions:{
-                                plugin() {
-                                 return [autoprefixer({browsers: "cover 99.5%"})];
-                                }
-                            }
-                        }
-                    },
-                    {
-                        loder: "sass-loader"
-                    }
-                ])
+  entry: ENTRY_FILE,
+  mode: MODE,
+  module: {
+    rules: [
+      {
+        test: /\.(scss)$/,
+        use: ExtractCSS.extract([
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+            postcssOptions: {
+            ㅤplugins() {
+            ㅤㅤreturn [autoprefixer({ browsers: "cover 99.5%" })]
+            ㅤ}
             }
-        ]
-    },
-    output: {
-        path: OUTPUT_DIR,
-        filename: "[name].js"
-      },
-      plugins: [new ExtractCSS("styles.css")]
-    };
-    
-    module.exports = config;
+          }
+        },
+          {
+            loader: "sass-loader"
+          }
+        ])
+      }
+    ]
+  },
+  output: {
+    path: OUTPUT_DIR,
+    filename: "[name].js"
+  },
+  plugins: [new ExtractCSS("styles.css")]
+};
+
+module.exports = config;
