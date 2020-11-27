@@ -14,6 +14,7 @@ const app = express();  //express를 import한 값을 const로
 app.use(helmet());          //security
 app.set('view engine', "pug");
 app.use("/uploads", express.static("uploads"));
+app.use("/static", express.static("static"));
 app.use(cookieParser());    //cookie전달
 app.use(bodyParser.json()); //웹사이트로 전달되는 정보 검사
 app.use(bodyParser.urlencoded({extended:true}));
