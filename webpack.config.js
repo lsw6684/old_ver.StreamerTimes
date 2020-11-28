@@ -28,13 +28,11 @@ const config = {
           {
             loader: "postcss-loader",
             options: {
-            postcssOptions: {
-            ㅤplugins() {
-            ㅤㅤreturn [autoprefixer({ browsers: "cover 99.5%" })]
-            ㅤ}
+              plugins() {
+                return [autoprefixer({ browsers: "cover 99.5%" })];
+              }
             }
-          }
-        },
+          },
           {
             loader: "sass-loader"
           }
