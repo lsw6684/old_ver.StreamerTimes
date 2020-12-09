@@ -79,7 +79,8 @@ export const userDetail = async (req, res) => {
     params: { id }
   } = req;
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(id).populate("videos");
+    console.log(user);
     res.render("userDetail", { pageTitle: "User Detail", user });
   } catch (error) {
     res.redirect(routes.home);
@@ -111,7 +112,7 @@ export const getChangePassword = (req, res) =>
 
 export const postChangePassword = async (req, res) => {
   const {
-    body: { olodPassword, newPassword, newPassword1 }
+    body: { oldPassword, newPassword, newPassword1 }
   } = req;
   try {
     if (newPassword !== newPassword1) {
@@ -119,10 +120,10 @@ export const postChangePassword = async (req, res) => {
       res.redirect(`/users/${routes.changePassword}`);
       return;
     }
-    await req.user.changePassword(olodPassword, newPassword);
+    await req.user.changePassword(oldPassword, newPassword);
     res.redirect(routes.me);
   } catch (error) {
     res.status(400);
-    res.render(`/users/${routes.changePassword}`);
+    res.redirect(`/users/${routes.changePassword}`);
   }
 };
