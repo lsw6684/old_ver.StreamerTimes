@@ -216,6 +216,15 @@ button,
 input[type="submit"] {
   cursor: pointer; }
 
+.record-container {
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 50px; }
+  .record-container video {
+    background-color: #444444;
+    width: 100%;
+    margin-bottom: 20px; }
+
 .header {
   background-color: #238aea;
   margin-bottom: 50px; }
